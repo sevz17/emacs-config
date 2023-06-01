@@ -394,5 +394,13 @@
 (use-package git-gutter
   :config
   (global-git-gutter-mode 1))
+
+(use-package git-commit
+  :hook
+  (after-init . global-git-commit-mode)
+  (git-commit-mode . (lambda () (setq fill-column 72)))
+  :custom
+  (git-commit-summary-max-length 50)
+  (git-commit-style-convention-checks '(overlong-summary-line non-empty-second-line)))
 ;;; init.el ends here
 
