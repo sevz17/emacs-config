@@ -64,6 +64,7 @@
 
   :config
   (set-font-faces)
+  (server-stop-automatically 'kill-terminal)
   (indent-tabs-mode 1)
 
   (scroll-bar-mode -1)   ;; Disable visible scrollbar
