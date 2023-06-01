@@ -100,6 +100,14 @@
   :custom
   (display-line-numbers-type 'relative))
 
+(use-package electric
+  :config
+  (electric-quote-mode 1))
+
+(use-package elec-pair
+  :config
+  (electric-pair-mode 1))
+
 (use-package treesit
   :when (treesit-available-p)
   :straight (:type built-in)
