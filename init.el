@@ -393,12 +393,5 @@
 (use-package git-gutter
   :config
   (global-git-gutter-mode 1))
-
-(use-package persp-mode
-  :unless noninteractive
-  :bind-keymap
-  ("C-c P" . persp-key-map)
-  :config
-  (persp-mode 1))
 ;;; init.el ends here
 
