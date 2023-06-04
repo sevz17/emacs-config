@@ -101,10 +101,6 @@
   :custom
   (display-line-numbers-type 'relative))
 
-(use-package electric
-  :config
-  (electric-quote-mode 1))
-
 (use-package elec-pair
   :config
   (electric-pair-mode 1))
