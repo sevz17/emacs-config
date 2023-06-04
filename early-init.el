@@ -12,10 +12,10 @@
 ;; to skip the mtime checks on every *.elc file.
 (setq load-prefer-newer noninteractive)
 
-;; Change the user-emacs-directory to keep unwanted things out of ~/.config/emacs
-(setq user-emacs-directory (or (getenv "XDG_CACHE_HOME")
-							   (convert-standard-filename
-								(expand-file-name "~/.cache/emacs/"))))
+;; Change `user-emacs-directory' to keep unwanted things out of ~/.config/emacs
+(require 'xdg)
+(setq user-emacs-directory
+	  (file-name-concat (xdg-cache-home) "emacs"))
 
 ;; Avoid tangling emacs directory
 (startup-redirect-eln-cache "var/eln-cache/")
