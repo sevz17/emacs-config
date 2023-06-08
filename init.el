@@ -201,11 +201,7 @@
   (doom-themes-org-config))
 
 (use-package doom-modeline
-  :hook (after-init . doom-modeline-mode)
-  :custom
-  (doom-modeline-icon t)
-  :config
-  (setq doom-modeline-major-icon t))
+  :hook (after-init . doom-modeline-mode))
 
 (use-package which-key
   :hook (after-init . which-key-mode)
