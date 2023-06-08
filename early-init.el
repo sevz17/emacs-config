@@ -17,9 +17,6 @@
 (setq user-emacs-directory
 	  (file-name-concat (xdg-cache-home) "emacs"))
 
-;; Avoid tangling emacs directory
-(startup-redirect-eln-cache "var/eln-cache/")
-
 ;; Configure native compilation
 (require 'comp)
 (setopt native-comp-speed 3
