@@ -9,6 +9,15 @@
 
 (set-default-coding-systems 'utf-8)
 
+(defun set-font-faces ()
+  "Set fonts."
+  (set-face-attribute
+   'default nil :font "Iosevka NFM:size=13:antialias=true:autohint=true")
+  (set-face-attribute
+   'fixed-pitch nil :font "Iosevka NFM:size=13:antialias=true:autohint=true")
+  (set-face-attribute
+   'variable-pitch nil :font "Iosevka NF:size=13:antialias=true:autohint=true"))
+
 ;; Bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -25,14 +34,6 @@
 
 (require 'use-package)
 
-(defun set-font-faces ()
-  "Set fonts."
-  (set-face-attribute 'default nil
-		    :font "Iosevka NFM:size=13:antialias=true:autohint=true")
-  (set-face-attribute 'fixed-pitch nil
-		    :font "Iosevka NFM:size=13:antialias=true:autohint=true")
-  (set-face-attribute 'variable-pitch nil
-		    :font "Iosevka NF:size=13:antialias=true:autohint=true"))
 
 ;; Configuration not related to packages
 (use-package emacs
