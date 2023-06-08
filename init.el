@@ -250,7 +250,7 @@
   :after (ivy hydra))
 
 (use-package ivy-rich
-  :after counsel
+  :after (ivy counsel)
   :hook (after-init . ivy-rich-mode)
   :config
   (setq ivy-format-function #'ivy-format-function-line)
@@ -272,6 +272,7 @@
 
 
 (use-package counsel
+  :after ivy
   :demand t
   :bind (("M-x" . counsel-M-x)
          ("C-x b" . counsel-ibuffer)
