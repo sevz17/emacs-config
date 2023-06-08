@@ -32,6 +32,12 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(setopt straight-check-for-modifications '(find-when-checking)
+		;; Use `straight' for `use-package' expressions
+		straight-use-package-by-default t
+		;; Use shallow clone and single branch
+		straight-vc-git-default-clone-depth '(1 single-branch))
+
 (require 'use-package)
 
 
@@ -139,14 +145,6 @@
   :hook
   (sh-mode . (lambda ()
 			   (setq indent-tabs-mode nil))))
-
-;; Use straight.el for use-package expressions
-(use-package straight
-  :custom
-  (straight-use-package-by-default t)
-  (straight-use-package-version 'straight)
-  (straight-check-for-modifications nil)
-  (straight-vc-git-default-clone-depth '(1 single-branch)))
 
 ;; Using garbage magic hack.
 (use-package gcmh
