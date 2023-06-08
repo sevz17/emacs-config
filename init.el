@@ -105,6 +105,7 @@
   (server-stop-automatically 'kill-terminal)
   (set-fringe-mode 6)
   (indent-tabs-mode 1)
+  (modify-all-frames-parameters '((alpha-background . 95)))
 
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
