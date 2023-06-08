@@ -184,7 +184,9 @@
   (sh-mode . (lambda ()
 			   (setq indent-tabs-mode nil))))
 
-
+(use-package savehist
+  :hook
+  (after-init . savehist-mode))
 
 (use-package doom-themes
   :demand t
