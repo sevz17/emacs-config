@@ -431,5 +431,8 @@
   :custom
   (git-commit-summary-max-length 50)
   (git-commit-style-convention-checks '(overlong-summary-line non-empty-second-line)))
+
+(use-package clipetty
+  :hook (tty-setup . global-clipetty-mode))
 ;;; init.el ends here
 
