@@ -102,6 +102,7 @@
   (doc-view-svg-foreground "white")
   (doc-view-svg-background "black")
   (use-short-answers t)
+  (vc-follow-symlinks t)
   (require-final-newline t)
 
   :config
