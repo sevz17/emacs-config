@@ -98,6 +98,7 @@
   (auth-sources (list "~/.local/share/emacs/authinfo.gpg"))
   (inhibit-startup-message t)
   (enable-recursive-minibuffers t)
+  (use-short-answers t)
 
   :config
   (set-font-faces)
