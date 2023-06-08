@@ -152,7 +152,6 @@
   (after-init . electric-pair-mode))
 
 (use-package treesit
-  :when (treesit-available-p)
   :straight (:type built-in)
   :custom
   (treesit-font-lock-level 4)
