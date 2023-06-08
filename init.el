@@ -105,6 +105,7 @@
   (vc-follow-symlinks t)
   (require-final-newline t)
   (initial-scratch-message nil)
+  (kill-do-not-save-duplicates t)
 
   :config
   (set-font-faces)
