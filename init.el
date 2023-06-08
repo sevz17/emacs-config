@@ -398,14 +398,16 @@
 		   sh-mode
 		   bash-ts-mode
 		   lua-mode) . eglot-ensure))
+  :custom
+  (eglot-sync-connect 1)
+  (eglot-connect-timeout 10)
+  (eglot-autoshutdown t)
+  (eglot-send-changes-idle-time 0.5)
   :config
-  (setq eglot-sync-connect 1
-        eglot-connect-timeout 10
-        eglot-autoshutdown t
-        eglot-send-changes-idle-time 0.5
-        ;; NOTE We disable eglot-auto-display-help-buffer because :select t in
-        ;;      its popup rule causes eglot to steal focus too often.
-        eglot-auto-display-help-buffer nil))
+  (setq
+   ;; NOTE We disable eglot-auto-display-help-buffer because :select t in
+   ;;      its popup rule causes eglot to steal focus too often.
+   eglot-auto-display-help-buffer nil))
 
 (use-package meson-mode
   :after company
