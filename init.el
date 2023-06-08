@@ -434,5 +434,8 @@
 
 (use-package clipetty
   :hook (tty-setup . global-clipetty-mode))
+
+(use-package saveplace
+  :hook (after-init . save-place-mode))
 ;;; init.el ends here
 
