@@ -143,7 +143,7 @@
 (use-package display-line-numbers
   :hook
   ;; Enable line numbers for some modes
-  ((text-mode prog-mode conf-mode) . (lambda () (display-line-numbers-mode 1)))
+  ((text-mode prog-mode conf-mode) . display-line-numbers-mode)
   :custom
   (display-line-numbers-type 'relative))
 
