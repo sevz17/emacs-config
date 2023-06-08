@@ -103,8 +103,8 @@
   (display-line-numbers-type 'relative))
 
 (use-package elec-pair
-  :config
-  (electric-pair-mode 1))
+  :hook
+  (after-init . electric-pair-mode))
 
 (use-package treesit
   :when (treesit-available-p)
@@ -173,14 +173,13 @@
   (setq doom-modeline-major-icon t))
 
 (use-package which-key
-  :config
-  (which-key-mode 1)
+  :hook (after-init . which-key-mode)
   :custom
   (which-key-idle-delay 0.3))
 
 (use-package unicode-fonts
-  :config
-  (unicode-fonts-setup))
+  :hook
+  (after-init . unicode-fonts-setup))
 
 (use-package alert
   :custom
@@ -203,8 +202,8 @@
   (ivy-use-virtual-buffers t)
   (ivy-wrap t)
   (ivy-count-format "%d/%d ")
+  :hook (after-init . ivy-mode)
   :config
-  (ivy-mode 1)
   ;; Use different regex strategies per completion command
   (push '(completion-at-point . ivy--regex-fuzzy) ivy-re-builders-alist) ;; This doesn't seem to work...
   (push '(swiper . ivy--regex-ignore-order) ivy-re-builders-alist)
@@ -222,8 +221,8 @@
 
 (use-package ivy-rich
   :after counsel
+  :hook (after-init . ivy-rich-mode)
   :config
-  (ivy-rich-mode 1)
   (setq ivy-format-function #'ivy-format-function-line)
   (setq ivy-rich-display-transformers-list
         (plist-put ivy-rich-display-transformers-list
@@ -280,19 +279,19 @@
 
 (use-package prescient
   :after counsel
-  :config
-  (prescient-persist-mode 1))
+  :hook
+  (after-init . prescient-persist-mode))
 
 (use-package ivy-prescient
-  :after prescient
-  :config
-  (ivy-prescient-mode 1))
+  :after (ivy prescient)
+  :hook
+  (after-init . ivy-prescient-mode))
 
 (use-package adaptive-wrap)
 
 (use-package company
-  :config
-  (global-company-mode 1))
+  :hook
+  (after-init . global-company-mode))
 
 (use-package ebuild-mode)
 
@@ -317,8 +316,8 @@
   (:type git :host github :repo "pkgcore/pkgcheck" :files ("contrib/emacs/*.el")))
 
 (use-package projectile
-  :config
-  (projectile-mode 1)
+  :hook
+  (after-init . projectile-mode)
   :custom
   (projectile-completion-system 'ivy)
   (projectile-enable-caching t)
@@ -335,7 +334,7 @@
 
 (use-package counsel-projectile
   :after (projectile counsel)
-  :config (counsel-projectile-mode 1))
+  :hook (after-init . counsel-projectile-mode))
 
 (use-package magit
   :config
@@ -347,8 +346,8 @@
   (magit-diff-refine-hunk t))
 
 (use-package flycheck
-  :config
-  (global-flycheck-mode 1))
+  :hook
+  (after-init . global-flycheck-mode))
 
 (use-package lua-mode
   :custom
@@ -384,13 +383,12 @@
   (setq vterm-kill-buffer-on-exit t))
 
 (use-package editorconfig
-  :config (editorconfig-mode 1))
+  :hook (after-init . editorconfig-mode))
 
 (use-package markdown-mode)
 
 (use-package git-gutter
-  :config
-  (global-git-gutter-mode 1))
+  :hook (after-init . global-git-gutter-mode))
 
 (use-package git-commit
   :hook
