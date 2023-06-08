@@ -18,6 +18,22 @@
   (set-face-attribute
    'variable-pitch nil :font "Iosevka NF:size=13:antialias=true:autohint=true"))
 
+(defun byte-compile-user-init-files ()
+  "Byte compile `early-init-file' (if exists) and `user-init-file'."
+  (interactive)
+  (let ((byte-compile-warnings 'all))
+	(when (file-exists-p early-init-file)
+	  (byte-compile-file early-init-file))
+	(byte-compile-file user-init-file)
+	(native-compile user-init-file)))
+
+(defun my-emacs-lisp-mode-hook ()
+  "Hook to byte compile `early-init-file' and `user-init-file' on save."
+  (when (or
+		 (equal buffer-file-name early-init-file)
+		 (equal buffer-file-name user-init-file))
+	(add-hook 'after-save-hook 'byte-compile-user-init-files 0 t)))
+
 ;; Bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -82,6 +98,7 @@
 									  (float-time
 									   (time-subtract after-init-time before-init-time)))
 							  gcs-done)))
+  (emacs-lisp-mode . my-emacs-lisp-mode-hook)
   :bind (("C-x K" . kill-current-buffer)
 		 ("C-c k" . kill-whole-line)
 		 ("M-n" . "1")           ; The same as "C-u 1 C-v"
