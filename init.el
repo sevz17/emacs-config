@@ -92,7 +92,8 @@
 
 (use-package conf-mode
   :mode
-  ("/etc/portage/package.*" . conf-mode))
+  ("/etc/portage/package.*" . conf-space-mode)
+  ("/etc/portage/env/*" . conf-unix-mode))
 
 (use-package display-line-numbers
   :hook
