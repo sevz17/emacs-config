@@ -17,11 +17,9 @@
 (setq user-emacs-directory
 	  (file-name-concat (xdg-cache-home) "emacs"))
 
-;; Configure native compilation
-(require 'comp)
+(setq native-comp-jit-compilation t)
 (setopt native-comp-speed 3
+		native-comp-async-jobs-number (num-processors)
 		;; Silence native comp warnings
 		native-comp-async-report-warnings-errors 'silent)
-(setq comp-num-cpus (num-processors)
-	  native-comp-jit-compilation t)
 ;;; early-init.el ends here
