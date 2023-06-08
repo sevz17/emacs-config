@@ -38,7 +38,10 @@
 		;; Use shallow clone and single branch
 		straight-vc-git-default-clone-depth '(1 single-branch))
 
+;; `use-package' is bundled in emacs 29
 (require 'use-package)
+(setopt use-package-always-defer t)
+
 
 
 ;; Configuration not related to packages
@@ -154,6 +157,7 @@
 (use-package no-littering)
 
 (use-package doom-themes
+  :demand t
   :custom
   (doom-themes-enable-bold t)
   (doom-themes-enable-italic t)
@@ -215,7 +219,6 @@
   (setf (alist-get 'counsel-switch-buffer ivy-height-alist) 17))
 
 (use-package ivy-hydra
-  :defer t
   :after (ivy hydra))
 
 (use-package ivy-rich
