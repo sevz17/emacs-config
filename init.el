@@ -104,7 +104,11 @@
 		 ("M-n" . "1")           ; The same as "C-u 1 C-v"
 		 ("M-p" . [21 49 134217846]) ; The same as "C-u 1 M-v"
 		 ("C-c q q" . save-buffers-kill-emacs)
-		 ("C-c q r" . restart-emacs))
+		 ("C-c q r" . restart-emacs)
+		 ("C-c v c" . magit-commit)
+		 ("C-c v s" . git-gutter:stage-hunk)
+		 ("C-c v n" . git-gutter:next-hunk)
+		 ("C-c v p" . git-gutter:previous-hunk))
   :custom
   (create-lockfiles nil) ;; Do not write lockfiles, I'm the only one here
   (visible-bell t)       ;; Set up the visible bell
