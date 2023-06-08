@@ -91,6 +91,8 @@
   :custom
   (create-lockfiles nil) ;; Do not write lockfiles, I'm the only one here
   (visible-bell t)       ;; Set up the visible bell
+  (tab-bar-show 1)       ;; Do not show tab bar when there is only one tab
+  (tab-bar-close-last-tab-choice 'delete-frame)
   (tab-width 4)
   (tab-always-indent 'complete)
   (auth-sources (list "~/.local/share/emacs/authinfo.gpg"))
