@@ -409,9 +409,7 @@
    ;;      its popup rule causes eglot to steal focus too often.
    eglot-auto-display-help-buffer nil))
 
-(use-package meson-mode
-  :after company
-  :hook (meson-mode . company-mode))
+(use-package meson-mode)
 
 (use-package vterm
   :disabled t
