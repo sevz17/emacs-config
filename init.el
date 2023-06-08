@@ -49,6 +49,27 @@
   ;; Use inmediatly instead of using a hook
   :config (gcmh-mode 1))
 
+;; xdg.el is loaded in early-init
+(declare-function xdg-data-home "xdg")
+(declare-function xdg-config-home "xdg")
+(use-package no-littering
+  :demand t
+  :autoload no-littering-theme-backups
+  :init
+  (setq-default
+   ;; This dir stores config files
+   no-littering-etc-directory (file-name-concat (xdg-config-home) "emacs/etc/")
+   ;; This dir stores data files
+   no-littering-var-directory (file-name-concat (xdg-data-home) "emacs/var/"))
+  :config
+  ;; Set `backup-directory-alist'
+  (no-littering-theme-backups))
+
+(use-package tramp
+  :after no-littering ;; no-littering sets `backup-directory-alist'
+  :straight (:type built-in)
+  :custom
+  (tramp-backup-directory-alist backup-directory-alist))
 
 ;; Configuration not related to packages
 (use-package emacs
@@ -74,8 +95,6 @@
   (tab-always-indent 'complete)
   (auth-sources (list "~/.local/share/emacs/authinfo.gpg"))
   (inhibit-startup-message t)
-  (backup-directory-alist (list (cons "." (expand-file-name "backup-files/" user-emacs-directory))))
-  (tramp-backup-directory-alist backup-directory-alist)
   (enable-recursive-minibuffers t)
 
   :config
@@ -156,8 +175,6 @@
 			   (setq indent-tabs-mode nil))))
 
 
-;; Use no-littering to automatically set common paths to the new user-emacs-directory
-(use-package no-littering)
 
 (use-package doom-themes
   :demand t
