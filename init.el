@@ -98,6 +98,9 @@
   (auth-sources (list "~/.local/share/emacs/authinfo.gpg"))
   (inhibit-startup-message t)
   (enable-recursive-minibuffers t)
+  (doc-view-mupdf-use-svg t)
+  (doc-view-svg-foreground "white")
+  (doc-view-svg-background "black")
   (use-short-answers t)
 
   :config
