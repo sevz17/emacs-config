@@ -42,6 +42,12 @@
 (require 'use-package)
 (setopt use-package-always-defer t)
 
+;; Using garbage magic hack.
+(use-package gcmh
+  :autoload gcmh-mode
+  :demand t
+  ;; Use inmediatly instead of using a hook
+  :config (gcmh-mode 1))
 
 
 ;; Configuration not related to packages
@@ -149,9 +155,6 @@
   (sh-mode . (lambda ()
 			   (setq indent-tabs-mode nil))))
 
-;; Using garbage magic hack.
-(use-package gcmh
-  :config (gcmh-mode 1))
 
 ;; Use no-littering to automatically set common paths to the new user-emacs-directory
 (use-package no-littering)
