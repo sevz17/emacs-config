@@ -323,7 +323,11 @@
   :hook
   (after-init . global-company-mode))
 
-(use-package ebuild-mode)
+(use-package ebuild-mode
+  :hook
+  (ebuild-mode . (lambda ()
+	 (setq indent-tabs-mode t
+		   sh-basic-offset 4))))
 
 (use-package company-ebuild
   :after (company ebuild-mode)
