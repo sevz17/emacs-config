@@ -205,6 +205,7 @@
   (after-init . savehist-mode))
 
 (use-package doom-themes
+  :functions (doom-themes-org-config doom-themes-visual-bell-config)
   :demand t
   :custom
   (doom-themes-enable-bold t)
@@ -233,6 +234,13 @@
   (alert-default-style 'notifications))
 
 (use-package ivy
+  :defines (ivy-minibuffer-map
+			ivy-switch-buffer-map
+			ivy-reverse-i-search-map
+			ivy-re-builders-alist
+			ivy-height-alist
+			ivy-format-function)
+  :functions (ivy-format-function-line)
   :bind (("C-s" . swiper)
          :map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
@@ -266,6 +274,8 @@
   :after (ivy hydra))
 
 (use-package ivy-rich
+  :defines (ivy-rich-display-transformers-list)
+  :functions (ivy-format-function-line)
   :after (ivy counsel)
   :hook (after-init . ivy-rich-mode)
   :config
@@ -303,6 +313,7 @@
   (counsel-switch-buffer-preview-virtual-buffers nil))
 
 (use-package flx  ;; Improves sorting for fuzzy-matched results
+  :defines (ivy-flx-limit)
   :after ivy
   :defer t
   :init
@@ -388,6 +399,7 @@
   :hook (after-init . counsel-projectile-mode))
 
 (use-package magit
+  :defines (+magit-open-windows-in-direction)
   :config
   (setq +magit-open-windows-in-direction 'left)
   :custom
@@ -407,6 +419,7 @@
 (use-package eglot
   :straight (:type built-in)
   :commands eglot eglot-ensure
+  :defines (eglot-auto-display-help-buffer)
   :hook (((c-mode-common
 		   c-ts-base-mode
 		   yaml-ts-mode
