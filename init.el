@@ -105,10 +105,9 @@
   (set-fringe-mode 6)
   (indent-tabs-mode 1)
 
-  (scroll-bar-mode -1)   ;; Disable visible scrollbar
-  (tool-bar-mode -1)     ;; Disable the toolbar
-  (tooltip-mode -1)      ;; Disable tooltips
-  (menu-bar-mode -1)     ;; Disable the menu bar
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
 
   (pixel-scroll-precision-mode 1)
   (delete-selection-mode 1)
