@@ -359,9 +359,9 @@
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
-  (setq projectile-auto-discover nil)
+  (setopt projectile-auto-discover nil)
   (when (file-directory-p "~/source/repos")
-    (setq projectile-project-search-path '( ("~/source/repos" . 2 )))))
+    (setopt projectile-project-search-path '( ("~/source/repos" . 2 )))))
 
 (use-package projectile-ripgrep
   :after projectile)
