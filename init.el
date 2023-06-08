@@ -104,6 +104,7 @@
   (use-short-answers t)
   (vc-follow-symlinks t)
   (require-final-newline t)
+  (initial-scratch-message nil)
 
   :config
   (set-font-faces)
