@@ -131,6 +131,7 @@
   (vc-follow-symlinks t)
   (native-comp-async-query-on-exit t)
   (require-final-newline t)
+  (epg-pinentry-mode 'loopback)
   (initial-scratch-message nil)
   (kill-do-not-save-duplicates t)
 
