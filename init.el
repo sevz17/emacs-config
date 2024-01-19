@@ -4,8 +4,6 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setopt user-full-name "Leonardo Hernández Hernández"
-		user-mail-address "leohdz172@proton.me")
 
 (set-default-coding-systems 'utf-8)
 
