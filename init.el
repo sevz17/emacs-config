@@ -222,9 +222,41 @@
 
 (use-package c-ts-mode
   :after treesit
+  :config
+  (defun my-c-indent-style()
+	`(
+	  ;; Preproc directives
+	  ((node-is "preproc") column-0 0)
+	  ((node-is "#endif") column-0 0)
+	  ((match "preproc_call" "compound_statement") column-0 0)
+
+	  ((or (parent-is "parameter_list")
+		   (parent-is "argument_list")
+		   (parent-is "binary_expression")
+		   (parent-is "init_declarator")
+		   (parent-is "conditional_expression"))
+	   parent-bol ,(* 2 c-ts-mode-indent-offset))
+
+	  ((or (parent-is "field_declaration")
+		   (parent-is "enumerator"))
+	   parent-bol c-ts-mode-indent-offset)
+
+	  ;; `{' directly under the if/for/while/switch/do if on a newline
+	  ((or (match "compound_statement" "if_statement" nil nil nil)
+		   (match "compound_statement" "for_statement" nil nil nil)
+		   (match "compound_statement" "while_statement" nil nil nil)
+		   (match "compound_statement" "switch_statement" nil nil nil)
+		   (match "compound_statement" "do_statement" nil nil nil))
+	   parent-bol 0)
+
+	  ((match nil "compound_statement" "{" 0 0) parent-bol c-ts-mode-indent-offset)
+										;	((match nil "compound_statement" "expression_statement") parent-bol c-ts-mode-indent-offset)
+
+	  ;; Append here the indent style you want as base
+	  ,@(alist-get 'linux (c-ts-mode--indent-styles 'c))))
+  (setopt c-ts-mode-indent-style #'my-c-indent-style)
   :custom
-  (c-ts-mode-indent-offset tab-width)
-  (c-ts-mode-indent-style 'linux))
+  (c-ts-mode-indent-offset tab-width))
 
 (use-package sh-script
   :custom
