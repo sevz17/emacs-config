@@ -182,6 +182,7 @@
 
 (use-package treesit
   :straight (:type built-in)
+  :demand t
   :custom
   (treesit-font-lock-level 4)
   :config
