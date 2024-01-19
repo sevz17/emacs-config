@@ -535,6 +535,8 @@
 (use-package clipetty
   :hook (tty-setup . global-clipetty-mode))
 
+(use-package debbugs)
+
 (use-package saveplace
   :hook (after-init . save-place-mode))
 
