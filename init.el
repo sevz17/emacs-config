@@ -481,7 +481,9 @@
   (setq vterm-kill-buffer-on-exit t))
 
 (use-package editorconfig
-  :hook (after-init . editorconfig-mode))
+  :defines (editorconfig-lisp-use-default-indent)
+  :hook (after-init . editorconfig-mode)
+  :config (setq editorconfig-lisp-use-default-indent t))
 
 (use-package markdown-mode)
 
