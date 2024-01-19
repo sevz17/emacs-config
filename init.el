@@ -164,7 +164,10 @@
 (use-package conf-mode
   :mode
   ("/etc/portage/package.*" . conf-space-mode)
-  ("/etc/portage/env/*" . conf-unix-mode))
+  ("/etc/portage/env/*" . conf-unix-mode)
+  ("/etc/portage/env/*/*" . bash-ts-mode)
+  ("/etc/env.d/*" . conf-unix-mode)
+  ("/etc/conf.d/*" . conf-mode))
 
 (use-package display-line-numbers
   :hook
