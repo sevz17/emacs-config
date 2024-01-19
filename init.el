@@ -155,8 +155,7 @@
   :demand t
   :hook
   ;; Make sure the font is correctly loaded when running the daemon
-  (server-after-make-frame . (lambda ()
-							  (set-font-faces))))
+  (server-after-make-frame . set-font-faces))
 
 (use-package sendmail
   :mode
