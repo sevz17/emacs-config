@@ -57,7 +57,9 @@
 
 ;; `use-package' is bundled in emacs 29
 (require 'use-package)
-(setopt use-package-always-defer t)
+(if (daemonp)
+	(setopt use-package-always-demand t)
+  (setopt use-package-always-defer t))
 
 ;; Using garbage magic hack.
 (use-package gcmh
