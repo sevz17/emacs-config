@@ -104,8 +104,6 @@
   (emacs-lisp-mode . my-emacs-lisp-mode-hook)
   :bind (("C-x K" . kill-current-buffer)
 		 ("C-c k" . kill-whole-line)
-		 ("M-n" . "1")           ; The same as "C-u 1 C-v"
-		 ("M-p" . [21 49 134217846]) ; The same as "C-u 1 M-v"
 		 ("C-c q q" . save-buffers-kill-emacs)
 		 ("C-c q r" . restart-emacs)
 		 ("C-c v c" . magit-commit)
@@ -146,7 +144,6 @@
   (tool-bar-mode -1)
   (menu-bar-mode -1)
 
-  (pixel-scroll-precision-mode 1)
   (delete-selection-mode 1)
   (repeat-mode 1)
   (column-number-mode 1)
@@ -157,6 +154,19 @@
   :hook
   ;; Make sure the font is correctly loaded when running the daemon
   (server-after-make-frame . set-font-faces))
+
+(use-package pixel-scroll
+  :straight (:type built-in)
+  :demand t
+  :custom
+  (pixel-scroll-precision-interpolation-factor 1.0)
+  :bind
+  (([remap scroll-up-command]   . pixel-scroll-interpolate-down)
+   ([remap scroll-down-command] . pixel-scroll-interpolate-up)
+   ("M-n" . pixel-scroll-up)
+   ("M-p" . pixel-scroll-down))
+  :hook
+  (after-init . pixel-scroll-precision-mode))
 
 (use-package sendmail
   :mode
