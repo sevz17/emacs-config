@@ -599,4 +599,118 @@
   :straight
   (:host nil :repo "https://anongit.gentoo.org/git/proj/pkgcore/pkgcheck.git"
 		 :files ("contrib/emacs/*.el")))
+
+(use-package org
+  :hook
+  (variable-pitch-mode)
+  :custom
+  (org-ellipsis " ▾")
+  (org-agenda-files '("~/org/agenda.org" "~/org/Birthdays.org.gpg"))
+  (org-agenda-start-with-log-mode t)
+  (org-log-done 'time)
+  (org-log-into-drawer t)
+  (org-todo-keywords
+   '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
+	 (sequence "BACKLOG(b)" "PLAN(p)" "READY(r)" "ACTIVE(a)" "REVIEW(v)" "WAIT(w@/!)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(k@)")))
+  :config
+  ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+
+(use-package org-indent
+  :straight (:type built-in)
+  :after org
+  :hook (org-mode . org-indent-mode))
+
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode))
+
+(use-package visual-fill-column
+  :functions (visual-fill-column-mode)
+  :defines
+  (visual-fill-column-width
+   visual-fill-column-center-text)
+  :after org
+  :hook (org-mode . '((lambda ()
+						(setopt visual-fill-column-width 130
+							   visual-fill-column-center-text t))
+					  (visual-fill-column-mode 1))))
+
+(use-package elfeed
+  :defines
+  (elfeed-search-feed-face
+   elfeed-feeds)
+  :config
+  (setq elfeed-search-feed-face ":foreground #ffffff :weight bold"
+        elfeed-feeds (quote
+                       (("https://www.reddit.com/r/linux.rss" reddit linux)
+                        ("https://www.reddit.com/r/commandline.rss" reddit commandline)
+                        ("https://www.reddit.com/r/distrotube.rss" reddit distrotube)
+                        ("https://www.reddit.com/r/emacs.rss" reddit emacs)
+                        ("https://hackaday.com/blog/feed/" hackaday linux)
+                        ("https://opensource.com/feed" opensource linux)
+                        ("https://linux.softpedia.com/backend.xml" softpedia linux)
+                        ("https://itsfoss.com/feed/" itsfoss linux)
+                        ("https://www.zdnet.com/topic/linux/rss.xml" zdnet linux)
+                        ("https://www.phoronix.com/rss.php" phoronix linux)
+                        ("https://www.computerworld.com/index.rss" computerworld linux)
+                        ("https://www.networkworld.com/category/linux/index.rss" networkworld linux)
+                        ("https://www.techrepublic.com/rssfeeds/topic/open-source/" techrepublic linux)
+                        ("http://lxer.com/module/newswire/headlines.rss" lxer linux)
+
+						("https://gitlab.freedesktop.org/wlroots/wlroots.atom" wlroots commits)
+						("https://github.com/weechat/weechat/commits/master.atom" weechat commits)
+						("https://codeberg.org/dnkl/fnott.rss" fnott commits)
+						("https://codeberg.org/dnkl/wbg.rss" wbg commits)
+						("https://github.com/emersion/hydroxide/commits/master.atom" hydroxide commits)
+
+						("https://git.pwmt.org/pwmt/girara/-/tags?format=atom" girara updates)
+						("https://git.pwmt.org/pwmt/zathura/-/tags?format=atom" zathura updates)
+						("https://github.com/weechat/weechat/releases.atom" weechat updates)
+						("https://github.com/rizsotto/Bear/releases.atom" bear updates)
+						("https://github.com/eza-community/eza/releases.atom" eza updates)
+						("https://github.com/reujab/silver/releases.atom" silver updates)
+						("https://github.com/ajeetdsouza/zoxide/releases.atom" zoxide updates)
+						("https://codeberg.org/dnkl/fnott/releases.rss" fnott updates)
+						("https://codeberg.org/dnkl/wbg/releases.rss" wbg updates)
+						("https://github.com/natsukagami/mpd-mpris/releases.atom" mpd-mpris updates)
+						("https://github.com/nukeop/nuclear/tags.atom" nuclear updates)
+						("https://github.com/emersion/hydroxide/releases.atom" hydroxide updates)
+						("https://github.com/coder/code-server/releases.atom" code-server updates)))))
+
+(use-package elfeed-goodies
+  :functions (elfeed-goodies/setup)
+  :config
+  (elfeed-goodies/setup))
+
+(add-to-list 'display-buffer-alist
+             '("\\*e?shell\\*\\|\\*terminal\\*"
+               (display-buffer-in-side-window)
+               (side . bottom)
+               (slot . -1) ;; -1 == L  0 == Mid 1 == R
+               (window-height . 0.33) ;; take 2/3 on bottom left
+               (window-parameters
+                (no-delete-other-windows . nil))))
+(add-to-list 'display-buffer-alist
+             '("\\*\\(Backtrace\\|Compile-log\\|Messages\\|Warnings\\)\\*"
+               (display-buffer-in-side-window)
+               (side . bottom)
+               (slot . 0)
+               (window-height . 0.33)
+               (window-parameters
+                (no-delete-other-windows . nil))))
+(add-to-list 'display-buffer-alist
+             '("\\*\\([Hh]elp\\|Command History\\|command-log\\)\\*"
+               (display-buffer-in-side-window)
+               (side . right)
+               (slot . 0)
+               (window-width . 80)
+               (window-parameters
+                (no-delete-other-windows . nil))))
 ;;; init.el ends here
