@@ -454,9 +454,11 @@
   :defines (eglot-auto-display-help-buffer)
   :hook (((c-mode-common
 		   c-ts-base-mode
+		   yaml-mode
 		   yaml-ts-mode
 		   python-mode
 		   python-ts-mode
+		   rust-ts-mode
 		   sh-mode
 		   bash-ts-mode
 		   lua-mode) . eglot-ensure))
