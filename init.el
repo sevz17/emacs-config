@@ -219,6 +219,9 @@
   (sh-mode . (lambda ()
 			   (setq-local indent-tabs-mode nil))))
 
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 (use-package savehist
   :hook
   (after-init . savehist-mode))
