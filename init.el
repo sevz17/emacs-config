@@ -527,11 +527,10 @@
   (git-commit-summary-max-length 50)
   (git-commit-style-convention-checks '(overlong-summary-line non-empty-second-line)))
 
-(use-package rmail
+(use-package eldoc
+  :straight (:type built-in)
   :custom
-  (rmail-primary-inbox-list '("imap://leohdz172%40proton.me@127.0.0.1:1143"))
-  (rmail-preserve-inbox t)
-  (rmail-remote-password-required t))
+  (eldoc-echo-area-use-multiline-p 1))
 
 (use-package clipetty
   :hook (tty-setup . global-clipetty-mode))
