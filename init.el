@@ -517,6 +517,8 @@
   ((prog-mode conf-mode) . flyspell-prog-mode)
   (text-mode . flyspell-mode))
 
+(use-package sort-words)
+
 (use-package git-commit
   :hook
   (after-init . global-git-commit-mode)
