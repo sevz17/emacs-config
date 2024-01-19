@@ -105,11 +105,7 @@
   :bind (("C-x K" . kill-current-buffer)
 		 ("C-c k" . kill-whole-line)
 		 ("C-c q q" . save-buffers-kill-emacs)
-		 ("C-c q r" . restart-emacs)
-		 ("C-c v c" . magit-commit)
-		 ("C-c v s" . git-gutter:stage-hunk)
-		 ("C-c v n" . git-gutter:next-hunk)
-		 ("C-c v p" . git-gutter:previous-hunk))
+		 ("C-c q r" . restart-emacs))
   :custom
   (create-lockfiles nil) ;; Do not write lockfiles, I'm the only one here
   (visible-bell t)       ;; Set up the visible bell
@@ -451,6 +447,9 @@
 
 (use-package magit
   :defines (+magit-open-windows-in-direction)
+  :bind (("C-c v c" . magit-commit)
+		 ("C-c v r c" . magit-rebase-continue)
+		 ("C-c v f" . magit-stage-file))
   :config
   (setq +magit-open-windows-in-direction 'left)
   :custom
@@ -510,6 +509,10 @@
 (use-package markdown-mode)
 
 (use-package git-gutter
+  :bind (("C-c v s" . git-gutter:stage-hunk)
+		 ("C-c v n" . git-gutter:next-hunk)
+		 ("C-c v p" . git-gutter:previous-hunk)
+		 ("C-c v h r" . git-gutter:revert-hunk))
   :hook (after-init . global-git-gutter-mode))
 
 (use-package flyspell
