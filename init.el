@@ -242,6 +242,9 @@
 (use-package doom-modeline
   :hook (after-init . doom-modeline-mode))
 
+(when (symbol-function 'malloc-trim)
+  (add-hook 'post-gc-hook #'malloc-trim))
+
 (use-package which-key
   :hook (after-init . which-key-mode)
   :custom
