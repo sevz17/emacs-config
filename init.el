@@ -68,7 +68,7 @@
   ;; Use inmediatly instead of using a hook
   :config (gcmh-mode 1))
 
-;; xdg.el is loaded in early-init
+;; xdg.el is loaded in `early-init-file'
 (declare-function xdg-data-home "xdg")
 (declare-function xdg-config-home "xdg")
 (use-package no-littering
