@@ -185,6 +185,9 @@
   :demand t
   :custom
   (treesit-font-lock-level 4)
+  :mode
+  ("CMakeLists\\.txt\\'" . cmake-ts-mode)
+  ("\\.cmake\\'" . cmake-ts-mode)
   :config
   (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode) t)
   (add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode) t)
