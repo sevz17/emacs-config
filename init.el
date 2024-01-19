@@ -426,31 +426,7 @@
   :hook
   (after-init . global-company-mode))
 
-(use-package ebuild-mode
-  :hook
-  (ebuild-mode . (lambda ()
-	 (setq indent-tabs-mode t
-		   sh-basic-offset 4))))
-
-(use-package company-ebuild
-  :after (company ebuild-mode)
-  :straight
-  (:host nil :repo "https://anongit.gentoo.org/git/proj/company-ebuild.git"))
-
 (use-package crontab-mode)
-
-(use-package emacs-eix
-  :disabled t
-  :straight (:host nil :repo "https://anongit.gentoo.org/git/proj/emacs-eix.git"))
-
-(use-package emacs-openrc
-  :disabled t
-  :straight (:host nil :repo "https://anongit.gentoo.org/git/proj/emacs-openrc.git"))
-
-(use-package emacs-pkgcheck
-  :disabled t
-  :straight
-  (:type git :host github :repo "pkgcore/pkgcheck" :files ("contrib/emacs/*.el")))
 
 (use-package projectile
   :hook
@@ -560,5 +536,61 @@
 
 (use-package saveplace
   :hook (after-init . save-place-mode))
-;;; init.el ends here
 
+(use-package ebuild-mode
+  :hook
+  (ebuild-mode . (lambda ()
+				   (setq-local indent-tabs-mode t
+							   sh-basic-offset 4)))
+  :bind
+  ("C-c u" . ebuild-mode-all-keywords-unstable)
+  :custom
+  (ebuild-mode-xml-indent-tabs t))
+
+(use-package nxml-mode
+  :straight (:type built-in)
+  :after (ebuild-mode)
+  :hook
+  (nxml-mode . (lambda ()
+	(when ebuild-repo-mode
+	  (setq-local indent-tabs-mode t
+				  sh-basic-offset 4)))))
+
+(use-package company-ebuild
+  :after (company ebuild-mode)
+  :straight
+  (:host nil :repo "https://anongit.gentoo.org/git/proj/company-ebuild.git"))
+
+(use-package yasnippet-snippets)
+
+(use-package yasnippet
+  :after (yasnippet-snippets)
+  :hook (after-init . yas-global-mode))
+
+(use-package ivy-yasnippet
+  :after (yassnippet))
+
+(use-package elogt
+  :straight
+  (:host nil :repo "https://anongit.gentoo.org/git/proj/emacs-elogt.git"))
+
+(use-package ebuild-snippets
+  :after (yasnippet)
+  :hook (after-init . ebuild-snippets-initialize)
+  :straight
+  (:host nil :repo "https://anongit.gentoo.org/git/proj/emacs-ebuild-snippets.git"
+		 :files ("*.el" "snippets")))
+
+(use-package eix
+  :straight
+  (:host nil :repo "https://anongit.gentoo.org/git/proj/emacs-eix.git"))
+
+(use-package openrc
+  :straight
+  (:host nil :repo "https://anongit.gentoo.org/git/proj/emacs-openrc.git"))
+
+(use-package flycheck-pkgcheck
+  :straight
+  (:host nil :repo "https://anongit.gentoo.org/git/proj/pkgcore/pkgcheck.git"
+		 :files ("contrib/emacs/*.el")))
+;;; init.el ends here
