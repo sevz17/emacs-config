@@ -449,6 +449,7 @@
 
 (use-package eglot
   :straight (:type built-in)
+  :bind ("C-c r" . eglot-rename)
   :commands eglot eglot-ensure
   :defines (eglot-auto-display-help-buffer)
   :hook (((c-mode-common
