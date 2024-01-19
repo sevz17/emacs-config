@@ -217,7 +217,7 @@
   (sh-basic-offset (/ tab-width 2))
   :hook
   (sh-mode . (lambda ()
-			   (setq indent-tabs-mode nil))))
+			   (setq-local indent-tabs-mode nil))))
 
 (use-package savehist
   :hook
