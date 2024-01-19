@@ -490,6 +490,11 @@
 (use-package git-gutter
   :hook (after-init . global-git-gutter-mode))
 
+(use-package flyspell
+  :hook
+  ((prog-mode conf-mode) . flyspell-prog-mode)
+  (text-mode . flyspell-mode))
+
 (use-package git-commit
   :hook
   (after-init . global-git-commit-mode)
