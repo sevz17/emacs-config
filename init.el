@@ -327,6 +327,8 @@
 (use-package counsel
   :after (ivy smex)
   :demand t
+  :hook
+  (after-init . counsel-mode)
   :bind (("M-x" . counsel-M-x)
          ("C-x b" . counsel-ibuffer)
          ("C-x C-f" . counsel-find-file)
