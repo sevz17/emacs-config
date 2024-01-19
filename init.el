@@ -445,6 +445,8 @@
   :custom
   (lua-indent-level 2))
 
+(use-package yaml-mode)
+
 (use-package eglot
   :straight (:type built-in)
   :commands eglot eglot-ensure
