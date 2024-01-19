@@ -129,6 +129,7 @@
   (cursor-in-non-selected-windows 'hollow)
   (cursor-type 'bar)
   (vc-follow-symlinks t)
+  (native-comp-async-query-on-exit t)
   (require-final-newline t)
   (initial-scratch-message nil)
   (kill-do-not-save-duplicates t)
