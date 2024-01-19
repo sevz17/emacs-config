@@ -325,7 +325,7 @@
 (use-package smex)
 
 (use-package counsel
-  :after ivy
+  :after (ivy smex)
   :demand t
   :bind (("M-x" . counsel-M-x)
          ("C-x b" . counsel-ibuffer)
