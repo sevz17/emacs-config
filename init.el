@@ -322,6 +322,8 @@
                              (not (derived-mode-p 'exwm-mode)))))))))
 
 
+(use-package smex)
+
 (use-package counsel
   :after ivy
   :demand t
