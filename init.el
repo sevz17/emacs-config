@@ -126,6 +126,8 @@
   (doc-view-svg-foreground "white")
   (doc-view-svg-background "black")
   (use-short-answers t)
+  (cursor-in-non-selected-windows 'hollow)
+  (cursor-type 'bar)
   (vc-follow-symlinks t)
   (require-final-newline t)
   (initial-scratch-message nil)
