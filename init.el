@@ -148,7 +148,9 @@
   (repeat-mode 1)
   (global-visual-line-mode 1)
   (column-number-mode 1)
-  (minibuffer-depth-indicate-mode 1))
+  (minibuffer-depth-indicate-mode 1)
+
+  (setq epa-file-encrypt-to user-mail-address))
 
 (use-package server
   :demand t
