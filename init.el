@@ -195,6 +195,9 @@
 			   '(c-or-c++-mode . c-or-c++-ts-mode) t)
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode) t))
 
+(use-package hl-line
+  :hook (after-init . global-hl-line-mode))
+
 (use-package cc-mode
   :unless (treesit-available-p)
   :custom
