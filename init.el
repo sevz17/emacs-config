@@ -119,7 +119,7 @@
   (tab-bar-close-last-tab-choice 'delete-frame)
   (tab-width 4)
   (tab-always-indent 'complete)
-  (auth-sources (list "~/.local/share/emacs/authinfo.gpg"))
+  (auth-sources (list (file-name-concat (xdg-data-home) "emacs/authinfo.gpg")))
   (inhibit-startup-message t)
   (enable-recursive-minibuffers t)
   (doc-view-mupdf-use-svg t)
